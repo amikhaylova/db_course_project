@@ -1,10 +1,11 @@
 import React from 'react';
 import "../css/forms.css"
-import {connect} from "react-redux";
-import {send_notification} from "../actions/UtilActions";
+/*import {connect} from "react-redux";
+import {send_notification} from "../actions/UtilActions";*/
 import SelectList from 'react-widgets/lib/SelectList'
 
 
+/*
 class Input extends React.Component{
     render() {
         let meta = this.props.meta;
@@ -36,6 +37,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input)
+*/
 
 export const renderSelectList = ({ input, data }) =>
     <SelectList {...input}
