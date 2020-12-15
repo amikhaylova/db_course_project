@@ -1,0 +1,26 @@
+const initialState = {
+    researchList: [
+        {value: 1, label: "анализ на вич"},
+        {value: 2, label: "анализ на сифилис"},
+        {value: 3, label: "анализ на хламидию"},
+        {value: 4, label: "анализ на уреаплазму"},
+        {value: 5, label: "анализ на гепатит С"},],
+    chosenResearch: []
+};
+
+export function orderReducer(state = initialState, action) {
+    switch (action.type) {
+        case 'ADD_RESEARCH':
+            //console.log("reducer " + action.payload.id);
+            return{...state,
+                chosenResearch: [...state.chosenResearch, action.payload]
+            };
+        case 'REMOVE_RESEARCH':
+            return{...state,
+                chosenResearch: action.payload
+            };
+        default:
+            return state;
+    }
+}
+
