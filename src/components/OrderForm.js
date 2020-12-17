@@ -3,6 +3,7 @@ import {required} from "redux-form-validators";
 import {Input} from "./NewClientForm"
 import {phoneNumber} from "../validators/phoneNumberValidator";
 import React from "react";
+import {renderSelect} from "./FormsComponents";
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
 
@@ -13,7 +14,16 @@ const OrderForm = (props) => {
             <div>
                 Центр забора материала:
             </div>
+
             <Field
+                name="favoriteColor"
+                component={renderSelect}
+                data={props.centers}
+                validate={required({message: 'Поле обязательно для заполнения'})}
+                //onChange={props.onSubmit}
+            />
+
+            {/*<Field
                 component="select"
                 name="center">
                 <option value=""></option>
@@ -22,7 +32,7 @@ const OrderForm = (props) => {
                         {colorOption}
                     </option>
                 ))}
-            </Field>
+            </Field>*/}
 
 
                 <div>

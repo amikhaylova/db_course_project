@@ -1,6 +1,6 @@
 import {Field, reduxForm, reset} from "redux-form";
 import React from "react";
-import {renderDropdownList, renderSelect} from './FormsComponents'
+import {renderSelect} from './FormsComponents'
 
 
 const ResearchForm = (props) => {

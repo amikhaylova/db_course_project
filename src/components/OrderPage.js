@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import OrderForm from "./OrderForm";
 import ResearchReduxForm from "./ResearchForm";
 import {connect} from "react-redux";
-import {addResearch, removeResearch} from '../actions/OrderActions'
+import {addResearch, removeResearch, loadResearch, loadMedicalCenters} from '../actions/OrderActions'
 import {research_notification} from '../actions/Notifications'
 import Notifications from "react-notification-system-redux";
 import {Research} from "./Research";
@@ -17,6 +17,11 @@ class OrderPage extends Component {
          this.props.add_research(data);*!/
      };
  */
+    constructor(props) {
+        super(props);
+        this.props.load_research();
+        this.props.load_centers();
+    }
 
     containsObject(obj) {
         let i;
@@ -50,7 +55,7 @@ class OrderPage extends Component {
         return (
             <div>
                 <h1>Это страница оформления заказов.</h1>
-                <OrderForm/>
+                <OrderForm centers = {this.props.order.medicalCenters}/>
                 <ResearchReduxForm research={this.props.order.researchList} onSubmit={this.onSubmit}/>
                 <Research chosenResearch = {this.props.order.chosenResearch} removeResearch = {this.removeResearch}/>
             </div>
@@ -76,6 +81,8 @@ function mapDispatchToProps(dispatch) {
         add_research: (data) => dispatch(addResearch(data)),
         remove_research: (data) => dispatch (removeResearch(data)),
         send_notification: () => dispatch(send_notification()),
+        load_research: () => dispatch(loadResearch()),
+        load_centers: () => dispatch(loadMedicalCenters()),
     }
 }
 
